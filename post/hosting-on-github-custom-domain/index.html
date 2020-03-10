@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+        <meta property="og:title" content="Hosting Hugo site on Github Pages with Custom Domain" />
+<meta property="og:description" content="As Sites created with HUGO will be static site and Github provides a free hosting for static website, we are going to use Github Pages." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.priteshusadadiya.com/post/hosting-on-github-custom-domain/" />
+<meta property="article:published_time" content="2019-02-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-13T00:00:00+00:00" />
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hosting Hugo site on Github Pages with Custom Domain"/>
+<meta name="twitter:description" content="As Sites created with HUGO will be static site and Github provides a free hosting for static website, we are going to use Github Pages."/>
+<meta name="twitter:site" content="@priteshusdadiya"/>
+
+        
+        <title>
+  Hosting Hugo site on Github Pages with Custom Domain | Pritesh Usadadiya
+</title>
+        <link rel="icon" type="image/png" href='https://www.priteshusadadiya.com/images/webheader.png' width="16" height="16">
+        <link rel="icon" type="image/png" href='https://www.priteshusadadiya.com/images/webheader.png' width="32" height="32">  
+
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        
+   		
+        
+        
+
+        <link rel="stylesheet" href="https://www.priteshusadadiya.com/css/bundle.min.536cf7b30652a82abe430d7698b4e550a9241f4fb0979541045ee4aa8872e256.css" integrity="sha256-U2z3swZSqCq&#43;Qw12mLTlUKkkH0&#43;wl5VBBF7kqohy4lY="  />
+		
+        
+    <link rel="me" type="text/html" href="https://twitter.com/priteshusdadiya"/> 
+<link rel="me" type="text/html" href="https://www.linkedin.com/in/priteshusadadiya/"/> 
+<link rel="icon" type="image/png" href="https://www.priteshusadadiya.com/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://www.priteshusadadiya.com/images/favicon-32x32.png" sizes="32x32">
+
+<link rel="alternate" type="application/rss+xml" href='https://www.priteshusadadiya.com/index.xml' />
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="Pritesh Usadadiya" />
+<meta name="copyright" content="Copyright © 2020, Pritesh Usadadiya" />
+
+
+<meta name="description" content="As Sites created with HUGO will be static site and Github provides a free hosting for static website, we are going to use Github Pages.
+">
+
+
+    
+    <style type="text/css">
+        .feature-image {
+            background-image: url("https://www.priteshusadadiya.com/images/blog/03/hosting-on-github-custom-domain.png");
+            height: 500px;
+        }
+
+        @media (max-width: 992px) {
+            .feature-image {
+                height: 350px;
+				background-size: cover;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-image {
+                height: 250px;
+				background-size: cover;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-image {
+                height: 200px;
+				background-size: cover;
+            }
+        }
+    </style>
+    
+        
+    </head>
+    <body>
+		<div class="">
+			<nav class="navbar webbrand fixed-top navbar-expand-lg py-1 top-nav">
+            <div class="container">
+                    
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+				
+				<a class="navbar-brand mx-auto" href="https://www.mattbutton.com/">
+<img style="max-height: 2.8rem;" alt="Matt Button" src="https://www.priteshusadadiya.com/images/priteshusadadiya.png">
+</a>
+
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/categories/quality-engineering/">QUALITY ENGINEERING</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/categories/development/">DEVELOPMENT</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/projects/">PROJECTS</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/about/">ABOUT</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link active" href="https://www.priteshusadadiya.com/post/" class="nav-link">ARCHIVE</a>
+</li>	
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		</div>
+
+        
+<header class="feature-image d-print-none">
+</header>
+
+        
+        <div class="container main">
+            
+<div class="share-icons d-print-none d-none d-lg-block">
+        <div class="share-icons d-print-none d-none d-lg-block">
+<ul class="list-unstyled">
+        <li class="share-icon">
+            <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&text=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain via @priteshusdadiya&tw_p=tweetbutton" class="p-2" title="Share on Twitter" target="_blank" rel="nofollow">
+				<i class="fab fa-twitter"></i>
+		</a>
+        </li>
+        
+        <li class="share-icon">
+		<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&t=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain" class="p-2" title="Share on Facebook" target="_blank" rel="nofollow">
+					<i class="fab fa-facebook"></i>
+			</a>
+		</li>
+        
+        <li class="share-icon">
+		<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&title=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain&source=priteshusadadiya.com" class="p-2" title="Share on LinkedIn" target="_blank" rel="nofollow">
+			<i class="fab fa-linkedin"></i>
+			</a>
+		</li>
+        
+		<li class="share-icon">
+		<a href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&title=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain&source=priteshusadadiya.com" class="p-2" title="Share on Reddit" target="_blank" rel="nofollow">
+			<i class="fab fa-reddit"></i>
+			</a>
+		</li>
+
+</ul>
+</div>
+</div>
+<div class="mt-4 post mx-auto">
+    <h1 class="article-title">Hosting Hugo site on Github Pages with Custom Domain</h1>
+    
+
+<div class="mb-3">February 13, 2019&nbsp;
+• ☕️ 2 min read&nbsp;
+• <i class="fa fa-tags" title="Tags" aria-hidden="true"></i> <a href='https://www.priteshusadadiya.com/tags/hugo/'>hugo</a>, <a href='https://www.priteshusadadiya.com/tags/featured/'>featured</a>
+</div>
+
+    <div class="mt-4 mb-4 main-content">
+        <p>As Sites created with HUGO will be static site and Github provides a free hosting for static website, we are going to use <a href="https://help.github.com/articles/what-is-github-pages/">Github Pages</a>.</p>
+</br>
+## Create a Github Repository and Clone it Locally
+First thing we need to do is to Create 2 Project repositories on GitHub. Name your first repository with exact name as your website directory `YourProjectNanme` (Project that you created in your local machine) and for the second one,name it as **\<YourUserName\>.github.io**. This repository will contain static content created with Hugo.
+<p>Now, pull those repos to your local machine</p>
+<pre><code>cd &lt;YourProjectNanme&gt;
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YourUserName.github.io
+git clone https://github.com/YOUR-USERNAME/YourUserName.github.io.git
+</code></pre><p>Initialize your <code>&lt;YourProjectNanme&gt;</code> folder with below Command</p>
+<pre><code>git init
+</code></pre><p>And repo remotely with <code>remote</code> and <code>add</code></p>
+<pre><code>git remote add origin https://github.com/YOUR-USERNAME/YourProjectName.git
+git pull origin master
+</code></pre></br>
+## Edit Config File
+<p>Before we commit our changes we need to edit <code>config.toml</code> (Located in Root Directory of your Project &lsquo;YourProjectName&rsquo;) and change Base URL.</p>
+<pre><code>baseurl = &quot;https://YourUserName.github.io&quot; // Change YourUserName with your GIthub Username 
+--- OR ---
+baseurl = &quot;https://MySpecialDomainName.com&quot; // Custom Domain Name 
+</code></pre></br>
+## Generate static content
+Now lets generate static content with Hugo
+```
+hugo -d ../YourUserName.github.io
+```
+And now Push our Hugo Code to github repository
+<pre><code>cd YourProjectName
+git add .
+git commit -m &quot;your message&quot;
+git push origin master
+</code></pre><p>And Push Static content to github</p>
+<pre><code>cd YourUserName.github.io
+git add .
+git commit -m &quot;your message&quot;
+git push origin master
+</code></pre></br>
+# Configuring Custom Domain
+<p>In order to use custom domain with our gitthub pages, we will have to configure <code>A</code> records for our domain (you can do this wil help of DNS Provider)</p>
+<p>Add below IP address as a  <code>A</code> records on your domain.</p>
+<pre><code>185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+</code></pre><p>There are two way to add custom domain to our project.</p>
+<ol>
+<li>Create a CNAME file in our root directory of the project</li>
+<li>Use <code>Settings</code> option from github project repo and add a custom domain.</li>
+</ol>
+<h5 id="we-are-going-with-option-2">We are going with option 2</h5>
+</br>
+Open your github project repo **YourUserName.github.io** and navigate to settings page.Scroll down untill you see **GitHub Pages** section and there will be a option to add custom domain there.
+<p>Add your custom domain and click on save button.There is a also another check box <code>Enforce HTTPS</code>. check it (It will provide a layer of encryption and your site will be viewed over <code>HTTPS</code>).</p>
+<p>If you are using a <code>www</code> sub-domain, there are chances that you might not be able to check the <code>Enforce HTTPS</code> check-box.
+I was also receiving a <a href="https://dev.to/priteshusadadiya/privacy-error-with-custom-domain-in-and-github-pages-2ll2">Privacy error with custom domain</a> and i solved it by changing a DNS record.</p>
+<p>I had added the CNAME record (you can add this using DNS Provider)</p>
+<pre><code>www CNAME priteshusadadiya.com
+</code></pre><p>Problem with above is that I was redirecting my <code>www</code> sub-domain to my apex(main) domain.</p>
+<p>I Solved this issue by changing my CNAME record to</p>
+<pre><code>www CNAME YourUserName.github.io // add your github.io url here
+</code></pre></br>
+#### It takes around 48 hours for Github to generate HTTPS certificate on custom domain so, you might want to wait for it.
+<p></br></br>
+🙌 <strong>Congratulations,</strong> your website is now live and can be seen at  <strong>&lt;YourUserName&gt;.github.io</strong></p>
+<h5 id="a-note">A Note:</h5>
+<p>I am documenting this entire process just in case i might need it in future. Maybe this can be useful to you too.</p>
+<p>Happy Coding.</p>
+	</br>
+	</br>
+	</br>
+	<h3>Thanks for reading!</h3>
+	<p>Enjoyed this article? Follow me on Twitter at <a target="_blank" href="https://twitter.com/priteshusdadiya">@priteshusdadiya</a>.</p>
+	<p>Any questions, feedback, or anything that you think I’d be interested in? Please send me comment with comment box below, or get in touch with me <a href="https://www.priteshusadadiya.com/about/">here</a>.</p>
+	</br>
+	</br>
+	<div class="d-flex text-center justify-content-center mt-8" style="border-top: 1px solid #b9d2ec; background-color: #b9d2ec;">
+	<form role="form" id="contact-form" target="_blank" class="contact-form" action="https://tinyletter.com/pritesh1024" method="POST">
+        <div class="" style="margin: 0 auto">
+		<h3 class="mt-4" style="padding-top: 10px;padding-bottom: 10px;border-solid: 1px dotted #00b09c;">Subscribe to get my best content</h3>
+		
+		  			</br>
+			 <div class="col-md-6 input-group"  style="width: 80%;margin: 0 auto;">
+              <input type="email" required="required" id="tlemail" class="form-control input-subscription" name="email" placeholder="Email Address" id="">
+              <div class="input-group-append">
+				<input type="hidden" value="1" name="embed"/>
+                <input class="btn main-btn btn-primary" type="submit" value="Subscribe" />
+              </div>
+            </div>
+			</br>
+			 <div class="mb-4">
+			 <p>Each month, I send out my latest newsletter and articles. Subscribe to stay in the loop. No spam, ever. Unsubscribe at any time.</p>
+          </div>
+		</div>
+    </form>
+</div>
+
+	<div class="post-share-icons d-flex justify-content-center m-3">
+        <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&text=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain via @priteshusdadiya&tw_p=tweetbutton" class="p-2" title="Share on Twitter" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Tweet</small></div>
+</a>
+
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&t=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain" class="p-2" title="Share on Facebook" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&title=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain&source=mattbutton.com" class="p-2" title="Share on LinkedIn" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fhosting-on-github-custom-domain%2f&title=Hosting%20Hugo%20site%20on%20Github%20Pages%20with%20Custom%20Domain&source=priteshusadadiya.com" class="p-2" title="Share on Reddit" target="_blank" rel="nofollow">
+	    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+	</div>
+	<div class="about-author">
+		<div class="p-2 author-img">
+        <img src="https://www.priteshusadadiya.com/images/auther_image.jpg" class="rounded-circle" width="91" height="91">
+</div>
+
+<div>
+    <div class="title">About Pritesh Usadadiya</div>    
+    <p>I write on this site and work as a QE Engineer focused on Performance Testing , API and Load Testing , ETL , Automation etc…
+		Learn more about me <a href="https://www.priteshusadadiya.com/about/">here</a>, and connect with me on
+		<a href="https://twitter.com/priteshusdadiya" target="_blank">Twitter</a>,
+        <a href="https://dev.to/priteshusadadiya" target="_blank">Dev.to</a>,
+        and <a href="https://www.linkedin.com/in/pritesh-usadadiya-4b893155/" target="_blank">Linkedin.</a>
+    </p>
+</div>
+	</div>
+	<div class="container posthelper">
+		<form role="form" id="contact-form" class="contact-form" action="https://formspree.io/priteshonweb@gmail.com" method="POST">
+            <div class="row">
+				<div class="col-md-6">
+				<input type="hidden" name="postTitle" id="helpful" value="Hosting Hugo site on Github Pages with Custom Domain">
+				<h6><i>Was This Post Helpful?</i></h6>
+			  </div>
+			</div>
+			</br>
+            <div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+                       <textarea class="form-control textarea" rows="3" required="required" name="Message" id="Message" placeholder="Do you have any suggestions as to how I can make it better?"></textarea>
+                  	</div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-12">
+					<button type="submit" class="btn main-btn pull-right">Submit Feedback</button>
+                </div>
+            </div>
+        </form>
+</div>
+    
+	</div>
+</div>
+
+        </div>		  
+        <footer class="mt-auto footer d-print-none">
+		<div class="row">
+			<div class="col-sm-8 d-flex align-items-center justify-content-center">
+				<h4>Made with ❤️ in Gujarat, IN.</h4>
+			</p>
+			</div>
+			<div class="col-sm-4 d-flex align-items-center justify-content-center" style="font-size:20px">
+					<a class="py-2 px-2 d-inline-block" target="_blank" href="https://twitter.com/priteshusdadiya"><i class="fab fa-twitter fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://github.com/priteshusadadiya"><i class="fab fa-github fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://www.dev.to/priteshusadadiya/"><i class="fab fa-dev fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://www.linkedin.com/in/priteshusadadiya/"><i class="fab fa-linkedin fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href='https://www.priteshusadadiya.com/index.xml'><i class="fas fa-rss fa-lg"></i></a>
+
+
+			</div>
+		</div>		
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134288593-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </body>
+</html>

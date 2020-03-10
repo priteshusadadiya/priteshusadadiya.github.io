@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ? ">
+        <meta property="og:title" content="Noobs introduction to Cloud and Virtual Machine" />
+<meta property="og:description" content="As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ? " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.priteshusadadiya.com/post/cloud-and-vm/" />
+<meta property="article:published_time" content="2019-02-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-17T00:00:00+00:00" />
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Noobs introduction to Cloud and Virtual Machine"/>
+<meta name="twitter:description" content="As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ? "/>
+<meta name="twitter:site" content="@priteshusdadiya"/>
+
+        
+        <title>
+  Noobs introduction to Cloud and Virtual Machine | Pritesh Usadadiya
+</title>
+        <link rel="icon" type="image/png" href='https://www.priteshusadadiya.com/images/webheader.png' width="16" height="16">
+        <link rel="icon" type="image/png" href='https://www.priteshusadadiya.com/images/webheader.png' width="32" height="32">  
+
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        
+   		
+        
+        
+
+        <link rel="stylesheet" href="https://www.priteshusadadiya.com/css/bundle.min.536cf7b30652a82abe430d7698b4e550a9241f4fb0979541045ee4aa8872e256.css" integrity="sha256-U2z3swZSqCq&#43;Qw12mLTlUKkkH0&#43;wl5VBBF7kqohy4lY="  />
+		
+        
+    <link rel="me" type="text/html" href="https://twitter.com/priteshusdadiya"/> 
+<link rel="me" type="text/html" href="https://www.linkedin.com/in/priteshusadadiya/"/> 
+<link rel="icon" type="image/png" href="https://www.priteshusadadiya.com/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://www.priteshusadadiya.com/images/favicon-32x32.png" sizes="32x32">
+
+<link rel="alternate" type="application/rss+xml" href='https://www.priteshusadadiya.com/index.xml' />
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="Pritesh Usadadiya" />
+<meta name="copyright" content="Copyright © 2020, Pritesh Usadadiya" />
+
+
+<meta name="description" content="As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ? ">
+
+
+    
+    <style type="text/css">
+        .feature-image {
+            background-image: url("https://www.priteshusadadiya.com/images/blog/05/cloud-and-vm.png");
+            height: 500px;
+        }
+
+        @media (max-width: 992px) {
+            .feature-image {
+                height: 350px;
+				background-size: cover;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-image {
+                height: 250px;
+				background-size: cover;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-image {
+                height: 200px;
+				background-size: cover;
+            }
+        }
+    </style>
+    
+        
+    </head>
+    <body>
+		<div class="">
+			<nav class="navbar webbrand fixed-top navbar-expand-lg py-1 top-nav">
+            <div class="container">
+                    
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+				
+				<a class="navbar-brand mx-auto" href="https://www.mattbutton.com/">
+<img style="max-height: 2.8rem;" alt="Matt Button" src="https://www.priteshusadadiya.com/images/priteshusadadiya.png">
+</a>
+
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/categories/quality-engineering/">QUALITY ENGINEERING</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/categories/development/">DEVELOPMENT</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/projects/">PROJECTS</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="https://www.priteshusadadiya.com/about/">ABOUT</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link active" href="https://www.priteshusadadiya.com/post/" class="nav-link">ARCHIVE</a>
+</li>	
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		</div>
+
+        
+<header class="feature-image d-print-none">
+</header>
+
+        
+        <div class="container main">
+            
+<div class="share-icons d-print-none d-none d-lg-block">
+        <div class="share-icons d-print-none d-none d-lg-block">
+<ul class="list-unstyled">
+        <li class="share-icon">
+            <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&text=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine via @priteshusdadiya&tw_p=tweetbutton" class="p-2" title="Share on Twitter" target="_blank" rel="nofollow">
+				<i class="fab fa-twitter"></i>
+		</a>
+        </li>
+        
+        <li class="share-icon">
+		<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&t=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine" class="p-2" title="Share on Facebook" target="_blank" rel="nofollow">
+					<i class="fab fa-facebook"></i>
+			</a>
+		</li>
+        
+        <li class="share-icon">
+		<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&title=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine&source=priteshusadadiya.com" class="p-2" title="Share on LinkedIn" target="_blank" rel="nofollow">
+			<i class="fab fa-linkedin"></i>
+			</a>
+		</li>
+        
+		<li class="share-icon">
+		<a href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&title=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine&source=priteshusadadiya.com" class="p-2" title="Share on Reddit" target="_blank" rel="nofollow">
+			<i class="fab fa-reddit"></i>
+			</a>
+		</li>
+
+</ul>
+</div>
+</div>
+<div class="mt-4 post mx-auto">
+    <h1 class="article-title">Noobs introduction to Cloud and Virtual Machine</h1>
+    
+
+<div class="mb-3">February 17, 2019&nbsp;
+• ☕️ 4 min read&nbsp;
+• <i class="fa fa-tags" title="Tags" aria-hidden="true"></i> <a href='https://www.priteshusadadiya.com/tags/other/'>other</a>
+</div>
+
+    <div class="mt-4 mb-4 main-content">
+        <p>As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ?</p>
+<Center><sup>[Cover Image source](https://pixabay.com/en/cloud-computer-backup-technology-3998880/) by [katielwhite91](https://pixabay.com/en/users/katielwhite91-5572368/)</sup></center>
+<h1 id="cloud">Cloud</h1>
+<p>Reach of internet is ever expanding and with that every day new users are getting added and connected to rest of the the world.</p>
+<p>Concept of cloud computing has came from the same need. To increase the processing power of your applications so that it can reach to the end user in every corner of the world easily.</p>
+<p>No matter if you are a developer , Business owner , engineer or independent blogger. As your user base increases you will need to bring more reliable and effective system to handle this ever growing traffic and provide smooth and fast access to your product.</p>
+<h3 id="so-where-does-the-cloud-computers-fit-into-this-">So where does the cloud computers fit into this ?</h3>
+<p>As you might probably know that everything that exists on internet is stored on variety of devices known as the Servers.</p>
+<p>Now when you want to launch a digital product no matter how big or small you will need to put it on the highly reliable servers for better performance.</p>
+<h4 id="lets-take-a-example-of-jack">Lets take a example of jack</h4>
+<p>Jack runs a person blog where he talks abut the investment In stock market. He runs this blog on his own server.</p>
+<p>He has just started this new blog and the number of visitors on his blog are limited to 50 to 500. In this particular case jacks own server is more that enough to handle that load. he is doing perfectly fine.</p>
+<p>After couple months his visitor count gets increased from 1000 to 10000 per day and now his server are getting exhausted because of the increased traffic , so jack decides to increase his hardware (Hard disk , Ram , Processor) and he buys new stuff and upgrades his server.</p>
+<p><strong>After several months guess what happens ?</strong></p>
+<p>yup , you guessed it right . visitors count of the blog has gone way up and Jack is in trouble(again).</p>
+<h4 id="do-you-see-the-problem-here--here-are-couple-of-them">Do you see the problem here ? here are couple of them.</h4>
+<ol>
+<li>Jack will have to buy more stuff and upgrade his server manually every few months.</li>
+<li>Computer Hardware is not chip. He will need considerable amount of funds.</li>
+<li>Jack will have to take care of the server on his own. you know the regular clean up , software updates , Maintenance etc..</li>
+<li>Point 3 is hard job because it takes up a lot of time so jack will have to manage between blogging and maintaining his servers.</li>
+<li>At some point if jack decided to sell/close his blog then what will he do with all the servers that he has setup manually ? do he sell it ? Keep with him in-case in future he decides to restart his blogging ?</li>
+</ol>
+<p>Now Jack can do all the above by himself or let some one else do it. And by doing so he will save much of this otherwise wasted resources and time.</p>
+<h4 id="better-option-for-jack-is-to-turn-to-cloud-computing">Better option for Jack is to turn to Cloud Computing</h4>
+<p>So let's see how cloud computing will save jack.</p>
+<blockquote class="blockquote">
+Cloud computing is an information technology (IT) paradigm that enables ubiquitous access to shared pools of configurable system resources and higher-level services that can be rapidly provisioned with minimal management effort, often over the Internet. Cloud computing relies on sharing of resources to achieve coherence and economies of scale, similar to a public utility - Wikipedia
+</blockquote>
+<h2 id="in-other-words-you-pay-for-what-you-use">In other words &ldquo;You pay for what you use&rdquo;</h2>
+<p>With cloud computing jack will be able to add or remove the resources like hard disks , processors , ram etc.. as per his need. And this resources will exists with the cloud service providers so that he will be able to carry on with his work with less management effort and will be able to more focus on his product.</p>
+<h3 id="do-you-know-who-are-these-service-provides-">Do you know who are these service provides ?</h3>
+<p>Many companies in the industry are specialized in the cloud computing like Amazon , Microsoft , Google , Alibaba etc&hellip;</p>
+<p>You can buy the server space with this service providers and they will take care of the rest. Your basic needs are taken care of and you are free to focus just on your product. and if need arises to increase your hardware.. Well then you are just few clicks away..</p>
+<h1 id="virtual-machine">Virtual Machine</h1>
+</br>
+### Do you know what Virtual Machine is ?
+In Layman's terms VM is a emulation of the computer. Lets see a example to understand what does it mean ?
+<p>Suppose you are using a Windows Machine right now and suddenly you need a Ubuntu OS on your system. now what will you do ? Would you remove windows and install Ubuntu ? or buy a new system and install it there ?</p>
+<p>Simple answer is <strong>NO</strong> for both option.</p>
+<p>What you will do is that you will install a software like <strong>virtual box</strong> that allows you to run more than one operating system at a time and once software is installed you can install and use Ubuntu in that environment without compromising your current system architecture.</p>
+<p>This environment is called <strong><strong>virtual Machine</strong></strong> .</p>
+<p>Now i think you will have a better understanding of what is cloud and why do we use it.</p>
+<p>Thanks for reading.</p>
+<p><sup>This is a small portion of <a href="https://medium.com/@priteshusdadiya/advancing-the-future-of-cloud-computing-with-crowd-machine-72d9f324239d">article</a> i published a long time ago</sup></p>
+	</br>
+	</br>
+	</br>
+	<h3>Thanks for reading!</h3>
+	<p>Enjoyed this article? Follow me on Twitter at <a target="_blank" href="https://twitter.com/priteshusdadiya">@priteshusdadiya</a>.</p>
+	<p>Any questions, feedback, or anything that you think I’d be interested in? Please send me comment with comment box below, or get in touch with me <a href="https://www.priteshusadadiya.com/about/">here</a>.</p>
+	</br>
+	</br>
+	<div class="d-flex text-center justify-content-center mt-8" style="border-top: 1px solid #b9d2ec; background-color: #b9d2ec;">
+	<form role="form" id="contact-form" target="_blank" class="contact-form" action="https://tinyletter.com/pritesh1024" method="POST">
+        <div class="" style="margin: 0 auto">
+		<h3 class="mt-4" style="padding-top: 10px;padding-bottom: 10px;border-solid: 1px dotted #00b09c;">Subscribe to get my best content</h3>
+		
+		  			</br>
+			 <div class="col-md-6 input-group"  style="width: 80%;margin: 0 auto;">
+              <input type="email" required="required" id="tlemail" class="form-control input-subscription" name="email" placeholder="Email Address" id="">
+              <div class="input-group-append">
+				<input type="hidden" value="1" name="embed"/>
+                <input class="btn main-btn btn-primary" type="submit" value="Subscribe" />
+              </div>
+            </div>
+			</br>
+			 <div class="mb-4">
+			 <p>Each month, I send out my latest newsletter and articles. Subscribe to stay in the loop. No spam, ever. Unsubscribe at any time.</p>
+          </div>
+		</div>
+    </form>
+</div>
+
+	<div class="post-share-icons d-flex justify-content-center m-3">
+        <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&text=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine via @priteshusdadiya&tw_p=tweetbutton" class="p-2" title="Share on Twitter" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Tweet</small></div>
+</a>
+
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&t=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine" class="p-2" title="Share on Facebook" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&title=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine&source=mattbutton.com" class="p-2" title="Share on LinkedIn" target="_blank" rel="nofollow">
+    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.priteshusadadiya.com%2fpost%2fcloud-and-vm%2f&title=Noobs%20introduction%20to%20Cloud%20and%20Virtual%20Machine&source=priteshusadadiya.com" class="p-2" title="Share on Reddit" target="_blank" rel="nofollow">
+	    <div>
+        <span class="fa-stack">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    <div class="text-center"><small>Share</small></div>
+</a>
+	</div>
+	<div class="about-author">
+		<div class="p-2 author-img">
+        <img src="https://www.priteshusadadiya.com/images/auther_image.jpg" class="rounded-circle" width="91" height="91">
+</div>
+
+<div>
+    <div class="title">About Pritesh Usadadiya</div>    
+    <p>I write on this site and work as a QE Engineer focused on Performance Testing , API and Load Testing , ETL , Automation etc…
+		Learn more about me <a href="https://www.priteshusadadiya.com/about/">here</a>, and connect with me on
+		<a href="https://twitter.com/priteshusdadiya" target="_blank">Twitter</a>,
+        <a href="https://dev.to/priteshusadadiya" target="_blank">Dev.to</a>,
+        and <a href="https://www.linkedin.com/in/pritesh-usadadiya-4b893155/" target="_blank">Linkedin.</a>
+    </p>
+</div>
+	</div>
+	<div class="container posthelper">
+		<form role="form" id="contact-form" class="contact-form" action="https://formspree.io/priteshonweb@gmail.com" method="POST">
+            <div class="row">
+				<div class="col-md-6">
+				<input type="hidden" name="postTitle" id="helpful" value="Noobs introduction to Cloud and Virtual Machine">
+				<h6><i>Was This Post Helpful?</i></h6>
+			  </div>
+			</div>
+			</br>
+            <div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+                       <textarea class="form-control textarea" rows="3" required="required" name="Message" id="Message" placeholder="Do you have any suggestions as to how I can make it better?"></textarea>
+                  	</div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-12">
+					<button type="submit" class="btn main-btn pull-right">Submit Feedback</button>
+                </div>
+            </div>
+        </form>
+</div>
+    
+	</div>
+</div>
+
+        </div>		  
+        <footer class="mt-auto footer d-print-none">
+		<div class="row">
+			<div class="col-sm-8 d-flex align-items-center justify-content-center">
+				<h4>Made with ❤️ in Gujarat, IN.</h4>
+			</p>
+			</div>
+			<div class="col-sm-4 d-flex align-items-center justify-content-center" style="font-size:20px">
+					<a class="py-2 px-2 d-inline-block" target="_blank" href="https://twitter.com/priteshusdadiya"><i class="fab fa-twitter fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://github.com/priteshusadadiya"><i class="fab fa-github fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://www.dev.to/priteshusadadiya/"><i class="fab fa-dev fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href="https://www.linkedin.com/in/priteshusadadiya/"><i class="fab fa-linkedin fa-lg"></i></a>
+<a class="py-2 px-2 d-inline-block" target="_blank" href='https://www.priteshusadadiya.com/index.xml'><i class="fas fa-rss fa-lg"></i></a>
+
+
+			</div>
+		</div>		
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134288593-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </body>
+</html>
