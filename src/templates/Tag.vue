@@ -59,8 +59,8 @@ import PostCard from '../components/PostCard'
 export default {
   metaInfo () {
     return this.$seo({
-      title: 'Browse by Tags',
-      description: 'Browse Tags',
+      title: this.$page.tag.title,
+      description: this.$page.tag.title,
       keywords: 'Software Testing, QA, Automation, Security, Performance, Accessibility, Devops, TDD',
       openGraph: {
         title: 'Pritesh Usadadiya',

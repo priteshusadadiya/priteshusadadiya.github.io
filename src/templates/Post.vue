@@ -60,7 +60,7 @@ export default {
     Newsletter,
   },
   metaInfo() {
-    return {
+    return this.$seo({
       title: this.$page.post.title,
       description: this.$page.post.description,
       keywords: 'Software Testing, QA, Automation, Security, Performance, Accessibility, Devops, TDD',
@@ -78,7 +78,7 @@ export default {
       },
       link: [],   // any links
       script: []  // any scripts
-    };
+    });
   },
 };
 </script>

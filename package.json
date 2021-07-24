@@ -1,12 +1,12 @@
 {
   "name": "priteshusadadiya",
   "private": true,
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist",
   "scripts": {
     "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.2",
