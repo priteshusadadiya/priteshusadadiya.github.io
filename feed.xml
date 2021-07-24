@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pritesh Usadadiya</title>
+        <link>https://www.priteshusadadiya.com/</link>
+        <description>Pritesh Usadadiya is a software tester, occasional coder and blogger. and launching projects on the side.</description>
+        <lastBuildDate>Sat, 24 Jul 2021 12:12:39 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Gridsome Feed Plugin</generator>
+        <atom:link href="https://www.priteshusadadiya.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Real Time Performance Test Monitoring using JMeter, InfluxDB and Grafana]]></title>
+            <link>https://www.priteshusadadiya.com/post/real-time-performance-test-monitoring-using-j-meter-influx-db-and-grafana/</link>
+            <guid>https://www.priteshusadadiya.com/post/real-time-performance-test-monitoring-using-j-meter-influx-db-and-grafana/</guid>
+            <pubDate>Sat, 02 Nov 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+In this post we will see how easy it is to setup Jmeter to monitor Real Time test results using InfluxDB and Grafana.
+
+
+<!--more-->
+
+Jmeter provides a nonGUI mode to run performance test and it provides a nice summary result on console itself. you can certainly monitor test results on console and it works pretty well but if your test runs for hours then,
+
+it gets hard to analyze the summary results after a while.
+
+For ex, If I would like to know the active user count or response time over certain period, you have to go through the console summary output line by line.
+
+Another drawback is that results are in raw format which means you cannot just share it with the development/server team as the results are not in a very user-friendly format.
+
+To create graphs, Aggregrate Report, Error report you will need to wait for the JMeter test to finish.
+
+So, we can use JMeter’s Backend listener to send the results to an Influx database and visualize them in Grafana with nice chart by querying the DB.
+
+## How to setup and prepare InfluxDB instance
+---
+</br>
+First, let’s [Download](https://portal.influxdata.com/downloads) the InfluxDB based on your system.
+
+Now, to start InfluxDB navigate to `/bin` directory and double click the `influxd.exe`.
+
+you will see a screen like below.
+![an image](/images/08/1.png)
+
+After that We need to create a database for storing our JMeter load test data. In the `/bin` directory double click `Influx.exe`.
+
+Let’s run the `SHOW DATABASES` command – this will give you a list of databases.
+
+![an image](/images/08/2.png)
+
+To create a database Run the command: `CREATE DATABASE jmeterresults`
+
+Now let’s again run `SHOW DATABASES` again and you should see your new database listed.
+
+![an image](/images/08/3.png)
+
+We are done with Influxdb.
+
+## How to prepare Jmeter
+
+Open Jmeter script in GUI mode, if you don’t have one right now, here is a sample script for BlazeDemo site.
+
+First, let’s add a new backend listener to the thread group
+
+In the Backend Listener Implementation dropdown,
+
+```
+select `org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient` option. 
+```
+
+![an image](/images/08/4.png)
+
+And Configure the parameters as follows:
+
+```
+influxdbMetricsSender – NO CHANGE 
+
+influxdbUrl – this is the URL of InfluxDB is in the following format:  
+
+                http://host_to_change:8086/write?db=jmeter.  
+
+application – NO CHANGE 
+
+measurement – NO CHANGE 
+
+summaryOnly – NO CHANGE 
+
+samplersRegexp – NO CHANGE 
+
+percentiles – NO CHANGE 
+
+testTitle – Title of the Test 
+
+eventTags – NO CHANGE.
+```
+
+As we have created the `“jmeterresults”` database and we will be running it on a local machine with a default port, so in our case, the URL will be `http://127.0.0.1:8086/write?db=jmeterresults`
+
+Okay, now let’s run the test for few minutes so that we can have some data to show on Grafana.
+
+We are done with the Listener Setup.
+
+## How to prepare Grafana
+
+Download Grafana as per your system requirement.
+
+To start Grafana navigate to the `/bin` directory and run grafana-server.exe. (If you have installed as a Windows `exe` then there is no need to do this step as grafana will be started as default)
+
+Now let’s, open a browse and add following in URL Path: `http://localhost:3000` ( default username/password = admin/admin )
+
+Click Add Data Source and choose `InfluxDB` as the data source type.
+
+![an image](/images/08/5.png)
+
+
+Specify the URL: `http://localhost:8086` and the name of the influxdb database: `jmeterresults`
+
+Save the changes.
+
+![an image](/images/08/6.png)
+
+We have successfully created a DataSource instance and connected it with our database.
+
+Now for the Dashboard, Click `(+)` icon located in menu bar panel and choose `Import`
+
+![an image](/images/08/7.png)
+
+Add `5496` in Grafana.com Dashboard input field and click Load. (we are using this dashboard `https://grafana.com/grafana/dashboards/5496`)
+
+Click anywhere outside the input box and you should be able see a dashboard detail.
+
+![an image](/images/08/8.png)
+
+On the import dashboard screen, we will be prompted for the following:
+
+```
+ Name – specify the dashboard name (optional) 
+
+ Folder – NO CHANGE 
+
+ DB name – select the InfluxDB data source as jmeterresults 
+
+ Measurement name – NO CHANGE 
+
+ Backend send interval – NO CHANGE
+```
+
+We are done with Grafana setup.
+
+After above steps are cleared, we can run the test and see the results in the Grafana Dashboard in real time.
+
+![an image](/images/08/9.png)
+
+Hope this information can be useful.]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[What is the Test Plan / Test Approach ? and how to prepare it ?"]]></title>
+            <link>https://www.priteshusadadiya.com/post/what-is-the-test-plan-test-approach-and-how-to-prepare-it/</link>
+            <guid>https://www.priteshusadadiya.com/post/what-is-the-test-plan-test-approach-and-how-to-prepare-it/</guid>
+            <pubDate>Sun, 16 Jun 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+Test Documentation and planning were my least favorite things when I started my carrier. Mainly because Coding took preference above all others for me and I let others (read engineers at senior level) to take care of Test Planning and documentation. But as you progress more and more in your field, you start to get glimpse of why this things are important. There are lots of thing that we need to take care of in Testing of any Software.
+
+<!--more-->
+
+In this post, let me try to explain few points that everyone should follow when designing Test Process and Documentation of any given software product.
+
+1. Creating the test Plan.
+2. Preparing the test schedule.
+3. Brief introduction of the different test types
+4. Exit criteria that should be full filled before any production release.
+
+### How to prepare the Test Plan / Test Approach.
+
+There are lots of documents and various Matrices that are need to prepared for any project. 
+
+__Why?__</br> 
+Because these documents are the essential to the Understanding of the project as these are the Blueprint of the entire application.
+
+As far as the QA is concerned Test Plan (also known as the Test Approach) also falls under the same category. 
+
+So, lets break down the entire document process.
+
+```
+In General Test Plan Includes the following data.
+
+1. Test Scope
+   - In Scope
+   - Out of Scope
+2. Test Schedule
+3. Test Types
+4. Test Environment
+5. Test Approach
+6. Exit Criteria
+7. Open Risks/Issues
+   - Risks
+   - Issues
+```
+</br>
+
+#### 1. Test Scope: 
+"Areas / Functionalities that will be included during the Test Cycle" is Known as a Test Scope.
+
+In Other words
+
+{{% blockquote %}}
+Test Scope is the process of defining what features and functionalities are required to be tested and then making sure all of defined features and functionalities are thoroughly verified.
+{{% /blockquote %}}
+
+__*Let me give an example,*__
+There is a new requirement for Implementation for the smart search (Filtering the data based on the keywords entered by the end users).
+
+Now when this feature comes into the QA pool in a new Build then, entire focus of the Test should be this feature only and nothing else. This can be categories as a Test Scope.
+
+Now Imagine few other requirements which are also needed to be included into the next release so, these items will be included into the Test Scope for that release.
+
+Further the process can be divided into the 2 parts.
+
+	1. In Scope: - Features / Functions that are to be tested
+	2. Out of Scopes: - Features / Functions not to be tested
+</br>
+#### 2. Test Schedule: 
+Everything that is to be tested should be as per the schedule (proposed and approved time frame on which deliverables are due). 
+
+Test schedule can include variety of the phases. Some of them are listed below,
+```
+	A. Requirement Understanding
+	B. Test Plan creation
+	C. Test Cases creation
+	D. Test Execution in Different Environments
+	E. QA Sign-off*
+```
+You will have to provide the Start Date and End Date for Every Phase respectively,
+
+Below is the description of the phases which can be helpful for identifying the potential start and end dates for every phase.
+
+__*A. Requirement Understanding*__ : There are few things that needs to be happen before this stage can begin like, 
+
+```
+1. All the requirements should be clear and properly documented.
+2. All Support document should be available.
+3. Basic structure of the given requirements should be available, 
+	like wire-frames, Design mocks, Data flow etc.
+```
+</br>
+- Most of time frames for different phases can be derived from the requirements itself, if above three things are followed properly. </br>
+
+__*B. Test Plan Creation*__: How much time it will take to prepare this document itself?
+
+For every phase of the Test Schedule _*"Requirement Understanding"*_ is the part where you will actually know the efforts it will take to get things done.
+
+__*C. Test Cases creation*__: Once Requirements are fixed and documented properly, you will be able to draft test case easily from them and also be able to provide time frame for the same.
+   
+__*D. Test Cases Execution*__: Now this is a bit tricky part as this will depend on the details of different Environment to be tested.
+
+for example, if you are running the one test on Chrome, Firefox, IE and also on 5 Different devices then you will have a one test cases which executes 8 time in one Cycle.	
+</br></br>With that in mind and other details like,
+```
+	- How May Test Cycle you are performing?
+ 	- What is the Scope of each Cycle? 
+	- Each cycle can take different amount of time to complete. 
+```
+Will determine the time taken for each test cycle.
+
+__*for example*__, first cycle will always be somewhat longer than the second because probability of finding the bugs/Defects are high in the first Iteration.
+As cycle changes, amount bugs/Defects found during each Iteration will get smaller.
+		
+Based on the above details you can find the possible start and End Date of the Test Case Execution.
+
+__*E. QA Sign-off*__: How do you determine that testing is complete? obviously you’ll need some kind of criteria to make sure that you’re confident that application under test works as intended. 
+This criteria will be set as a pre-agreed upon exit gate definition, and once met testing will be completed.
+
+</br>
+#### 3. Test Types / categories:
+The overall application will include the following testing types/techniques*: 
+
+The below list of test depth/test techniques are used to assess application quality:
+``` 
+-	1. FT: Feature > Basic Feature Testing
+-	2. G: GUI > Validate look and feel of the application
+-	3. DB: Database > Verify DB interaction and CRUD procedures
+-	4. E2E: End to End > Validate E2E business flows and system interaction
+-	5. BR: Business Rule > Validate specific business rules with positive/negative conditions
+-	6. SVC: Service Level Testing > Validate web service level features 
+		(i.e. API`s, WS calls, etc.)
+-	7. EH: Error Handling > Validate Application Error handling
+-	8. BVA: Boundary Value Analysis > Review boundary values for feature/system interaction
+-	9. ST: State Transition > Validate application state 
+		(i.e. workflow, session, restful state validation, etc.)
+-	10. BT: Branch Tree/Decision Matrix > Validate inputs/outputs of a group of rules 
+-	11. DF: Data Flow > Validate system interaction
+		with a concentration on ETL and CRUD procedures between system components
+```
+</br>
+#### 4. Test Environment:
+List of all the Environments on which Test cases will be executed.
+</br>
+#### 5. Test Approach: 
+Here you should provide description of the features and other items to be tested along with the overall depth of testing and test methods used to discover defects.
+</br>
+#### 6. Exit Criteria: 
+Exit criteria must be met before sign-off for production release will be provided by QA.
+
+In another words "All things that should be done before providing the sign-off is known as an Exit Criteria"
+
+Here are some examples of exit criteria 
+```
+	1. All Sprint Stories/Items Accepted by QA and it is Ready for Production
+	2. Manual Regression Tests (Blocker and Critical Test Cases) have passed
+	3. No Critical or Blocker defects outstanding.
+	4. Automation Regression Suite Successfully Passed.
+	5. Performance Tests executed successfully.
+	6. Browser Compatibility works as expected.
+```
+</br>
+- If Possible include all of the above and have one field to mark if criteria are applicable or not. If yes, then mark it "Yes" and "No" otherwise. </br>
+- Also provide comments against each criteria for better understanding.
+
+#### 7. Open Risks or Issues: 
+Include all the bugs / Issues that are not fixed yet. 
+
+- Add the appropriate linking of the issues with their description and priority.
+- This information is critical and can have an effect on if Build should go into the next phase (Production release) or not.
+
+
+Hope this information can be useful. </br>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Browser Extensions for everyday QA Testing]]></title>
+            <link>https://www.priteshusadadiya.com/post/browser-extensions-for-everyday-qa-testing/</link>
+            <guid>https://www.priteshusadadiya.com/post/browser-extensions-for-everyday-qa-testing/</guid>
+            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[We all need toolkit that makes our jobs a little bit easier. As a QE there are several chrome extensions that i use everyday that boosts my productivity and reduces chunk of extra workload Here are all of them.
+
+
+<a class="title" href="https://chrome.google.com/webstore/detail/blazemeter-the-continuous/mbopgmdnpcbohhpnfglgohlbhfongabi?hl=en" target="_blank">
+<h4>BlazeMeter | The Continuous Testing Platform</h4>
+</a>
+BlazeMeter plugin is easiest way to record your performance script in jmeter
+
+<a class="title" href="https://chrome.google.com/webstore/detail/bug-magnet/efhedldbjahpgjcneebmbolkalbhckfi?hl=en" target="_blank">
+<h4>Bug Magnet</h4>
+</a>
+
+This is a handy tool for doing exploratory testing. it's [opensorce](https://github.com/gojko/bugmagnet) and provides you with range of test data to check edge cases of your app.
+
+<a class="title" href="https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf?hl=en" target="_blank">
+<h4>Check My Links</h4>
+</a>
+
+It's a  link checker that crawls through your webpage and looks for broken links.
+
+<a class="title" href="https://chrome.google.com/webstore/detail/exploratory-testing-chrom/khigmghadjljgjpamimgjjmpmlbgmekj?hl=en" target="_blank">
+<h4>Exploratory Testing Chrome Extension</h4>
+</a>
+
+Another must have plugin for Exploratory Testing. you can gp page by page take a screenshot and write bugs, ideas, notes etc.. 
+
+<a class="title" href="https://chrome.google.com/webstore/detail/note-anywhere/bohahkiiknkelflnjjlipnaeapefmjbh?hl=en" target="_blank">
+<h4>Note Anywhere</h4>
+</a>
+
+
+How many time you have browse through a article had some thoughts and forgot after some time. Well no more.
+
+with this extension, you can create notes on any web page and when you open that page again, the notes will get loaded automatically.
+
+<a class="title" href="https://chrome.google.com/webstore/detail/page-load-time/fploionmjgeclbkemipmkogoaohcdbig?hl=en" target="_blank">
+<h4>Page load time</h4>
+</a>
+
+Quickly need to check the loading time for your webpage ? there is a extension for it.
+
+<a class="title" href="https://chrome.google.com/webstore/detail/screencastify-screen-vide/mmeijimgabbpbgpdklnllpncmdofkcpn?hl=en" target="_blank">
+<h4>Screencastify - Screen Video Recorder</h4>
+</a>
+
+
+I use this plugin to record product workflows, bugs etc...
+
+In Free tire it gives you 50 recordings per month with max 10 min. recording per session. you can download saved videos from Google drive or export it as gifs.
+
+I have been using it for some time and never needed to upgrade to paid plan.
+
+<a class="title" href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en" target="_blank">
+<h4>WhatFont</h4>
+</a>
+
+Easiest way to find what kind of font is being used on any portion of webpage without going into the details of devtools.
+
+And of course my all time favourite
+
+<a class="title" href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank">
+<h4>Chrome DevTools</h4>
+</a>
+
+</br>
+___
+
+</br>
+
+__*Continue reading about various other plug-ins that Software Developers uses everyday.*__
+[What are some Browser plugins that you can't live without ?](https://dev.to/priteshusadadiya/browser-plugins-that-you-cant-live-without-27l8)
+
+</br>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Noobs introduction to Cloud and Virtual Machine]]></title>
+            <link>https://www.priteshusadadiya.com/post/noobs-introduction-to-cloud-and-virtual-machine/</link>
+            <guid>https://www.priteshusadadiya.com/post/noobs-introduction-to-cloud-and-virtual-machine/</guid>
+            <pubDate>Sun, 17 Feb 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[As a beginner in development (specially in web development)do you know What does cloud and VM actually mean ? and Why do we need them ? 
+
+
+<Center><sup>[Cover Image source](https://pixabay.com/en/cloud-computer-backup-technology-3998880/) by [katielwhite91](https://pixabay.com/en/users/katielwhite91-5572368/)</sup></center>
+
+
+# Cloud
+
+Reach of internet is ever expanding and with that every day new users are getting added and connected to rest of the the world.
+
+Concept of cloud computing has came from the same need. To increase the processing power of your applications so that it can reach to the end user in every corner of the world easily.
+
+No matter if you are a developer , Business owner , engineer or independent blogger. As your user base increases you will need to bring more reliable and effective system to handle this ever growing traffic and provide smooth and fast access to your product.
+
+### So where does the cloud computers fit into this ?
+As you might probably know that everything that exists on internet is stored on variety of devices known as the Servers.
+
+
+Now when you want to launch a digital product no matter how big or small you will need to put it on the highly reliable servers for better performance.
+
+#### Lets take a example of jack
+Jack runs a person blog where he talks abut the investment In stock market. He runs this blog on his own server.
+
+He has just started this new blog and the number of visitors on his blog are limited to 50 to 500. In this particular case jacks own server is more that enough to handle that load. he is doing perfectly fine.
+
+After couple months his visitor count gets increased from 1000 to 10000 per day and now his server are getting exhausted because of the increased traffic , so jack decides to increase his hardware (Hard disk , Ram , Processor) and he buys new stuff and upgrades his server.
+
+**After several months guess what happens ?**
+
+yup , you guessed it right . visitors count of the blog has gone way up and Jack is in trouble(again).
+
+#### Do you see the problem here ? here are couple of them.
+1. Jack will have to buy more stuff and upgrade his server manually every few months.
+2. Computer Hardware is not chip. He will need considerable amount of funds.
+3. Jack will have to take care of the server on his own. you know the regular clean up , software updates , Maintenance etc..
+4. Point 3 is hard job because it takes up a lot of time so jack will have to manage between blogging and maintaining his servers.
+5. At some point if jack decided to sell/close his blog then what will he do with all the servers that he has setup manually ? do he sell it ? Keep with him in-case in future he decides to restart his blogging ?
+
+Now Jack can do all the above by himself or let some one else do it. And by doing so he will save much of this otherwise wasted resources and time.
+
+#### Better option for Jack is to turn to Cloud Computing
+
+So let's see how cloud computing will save jack.
+
+{{% blockquote %}}
+Cloud computing is an information technology (IT) paradigm that enables ubiquitous access to shared pools of configurable system resources and higher-level services that can be rapidly provisioned with minimal management effort, often over the Internet. Cloud computing relies on sharing of resources to achieve coherence and economies of scale, similar to a public utility - Wikipedia
+{{% /blockquote %}}
+
+
+## In other words "You pay for what you use"
+
+With cloud computing jack will be able to add or remove the resources like hard disks , processors , ram etc.. as per his need. And this resources will exists with the cloud service providers so that he will be able to carry on with his work with less management effort and will be able to more focus on his product.
+
+### Do you know who are these service provides ?
+Many companies in the industry are specialized in the cloud computing like Amazon , Microsoft , Google , Alibaba etc...
+
+You can buy the server space with this service providers and they will take care of the rest. Your basic needs are taken care of and you are free to focus just on your product. and if need arises to increase your hardware.. Well then you are just few clicks away..
+
+
+# Virtual Machine
+</br>
+### Do you know what Virtual Machine is ?
+In Layman's terms VM is a emulation of the computer. Lets see a example to understand what does it mean ?
+
+Suppose you are using a Windows Machine right now and suddenly you need a Ubuntu OS on your system. now what will you do ? Would you remove windows and install Ubuntu ? or buy a new system and install it there ?
+
+Simple answer is **NO** for both option.
+
+What you will do is that you will install a software like **virtual box** that allows you to run more than one operating system at a time and once software is installed you can install and use Ubuntu in that environment without compromising your current system architecture.
+
+This environment is called __**virtual Machine**__ .
+
+
+
+Now i think you will have a better understanding of what is cloud and why do we use it. 
+
+Thanks for reading.
+
+
+<sup>This is a small portion of [article](https://medium.com/@priteshusdadiya/advancing-the-future-of-cloud-computing-with-crowd-machine-72d9f324239d) i published a long time ago</sup>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Customizing RSS Feed for Hugo Blog]]></title>
+            <link>https://www.priteshusadadiya.com/post/customizing-rss-feed-for-hugo-blog/</link>
+            <guid>https://www.priteshusadadiya.com/post/customizing-rss-feed-for-hugo-blog/</guid>
+            <pubDate>Wed, 13 Feb 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+Hugo ships with its own `RSS 2.0` template that requires almost no configuration, or you can create your own RSS templates.	
+
+However, there are few basic limitations to this like having complete `rss` feed, all pages and posts gets included, only summary of each post is included with RSS feed.
+So when you implement default `rss` feed then you also limit your `RSS feed` for your blog with above parameters.
+
+Answer to this is to create your own `RSS` template.
+
+## How to create custom RSS Template for Hugo.
+
+Below is the RSS template for Hugo. Copy below code into file, name it as `rss.xml` and save this file into default directory of layouts i.e. `layouts\_default`
+
+```
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>
+	{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}
+	{{ .Site.Title }}{{ end }}
+	</title>
+    <link>{{ .Permalink }}</link>
+    <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} 
+	{{ end }}{{ end }}on {{ .Site.Title }}</description>
+    <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
+    <language>{{.}}</language>{{end}}{{ with .Site.Author.email }}
+    <managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>
+	{{end}}
+	{{ with .Site.Author.email }}
+    <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>
+	{{end}}
+	{{ with .Site.Copyright }}
+    <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+	{{ end }}
+    {{ with .OutputFormats.Get "RSS" }}
+        {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range .Pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | html }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>
+```
+</br>
+## How to add entire post instead of just description in RSS Feed.
+By default only post description will be included in `RSS` feed so if you want to add full post in feed you will have to make some changes 
+
+Change this 
+```
+<description>{{ .Summary | html }}</description>
+```
+to this
+```
+<description>{{ .Content | html }}</description>
+```
+</br>
+## Exclude other custom pages and only include **`posts`** in RSS Feed
+By Default everything on your Hugo site will get transmitted over RSS feed including your custom pages which are not the part of your blog posts.
+To exclude these and include only `posts` make below change in your `rss.xml` file
+
+Change below line 
+``` 
+{{ range .Pages }}
+```
+With this 
+```
+{{ range .Pages "Section" "post" }}
+```
+This will exclude all single and separate pages from your `RSS` Feed
+
+</br>
+## Limit the feed with certain no. of posts.
+You can also limit the total no. of posts that broadcasts with `RSS` feed by using below code.
+
+```
+{{ range first 15 .Pages}}
+```
+</br>
+### So, lets see what we can do by combining all of the above 
+
+```
+{{ range first 15 (where .Data.Pages "Section" "post") }}
+```
+
+> Above code will remove all other pages and add only blog posts and also limit posts number by 15 (only first 15 posts will broadcast) 
+
+### Putting it all together
+
+At the end, here is how your `rss.xml` file will look like,
+```
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>
+	{{ if eq  .Title  .Site.Title }}
+	{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}
+	{{ end }}
+	</title>
+    <link>{{ .Permalink }}</link>
+    <description>Recent content 
+	{{ if ne  .Title  .Site.Title }}
+	{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}
+	</description>
+    <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
+    <language>{{.}}</language>{{end}}{{ with .Site.Author.email }}
+    <managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>
+	{{end}}
+	{{ with .Site.Author.email }}
+    <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>
+	{{end}}
+	{{ with .Site.Copyright }}
+    <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+	{{ end }}
+    {{ with .OutputFormats.Get "RSS" }}
+        {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range first 15 (where .Data.Pages "Section" "post") }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
+      <guid>{{ .Permalink }}</guid>
+	  <description>{{ .Content | html }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>
+```
+
+
+
+Hope this information can be useful.</br>
+Cheers 👋
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hosting Hugo site on Github Pages with Custom Domain]]></title>
+            <link>https://www.priteshusadadiya.com/post/hosting-hugo-site-on-github-pages-with-custom-domain/</link>
+            <guid>https://www.priteshusadadiya.com/post/hosting-hugo-site-on-github-pages-with-custom-domain/</guid>
+            <pubDate>Wed, 13 Feb 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+As Sites created with HUGO will be static site and Github provides a free hosting for static website, we are going to use [Github Pages](https://help.github.com/articles/what-is-github-pages/).
+
+</br>
+## Create a Github Repository and Clone it Locally
+First thing we need to do is to Create 2 Project repositories on GitHub. Name your first repository with exact name as your website directory `YourProjectNanme` (Project that you created in your local machine) and for the second one,name it as **\<YourUserName\>.github.io**. This repository will contain static content created with Hugo.
+
+
+Now, pull those repos to your local machine
+
+```
+cd <YourProjectNanme>
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YourUserName.github.io
+git clone https://github.com/YOUR-USERNAME/YourUserName.github.io.git
+```
+		
+Initialize your `<YourProjectNanme>` folder with below Command
+
+```
+git init
+```
+
+
+And repo remotely with `remote` and `add` 
+
+```
+git remote add origin https://github.com/YOUR-USERNAME/YourProjectName.git
+git pull origin master
+```
+
+</br>
+## Edit Config File
+
+Before we commit our changes we need to edit `config.toml` (Located in Root Directory of your Project 'YourProjectName') and change Base URL.
+
+```
+baseurl = "https://YourUserName.github.io" // Change YourUserName with your GIthub Username 
+--- OR ---
+baseurl = "https://MySpecialDomainName.com" // Custom Domain Name 
+```
+
+</br>
+## Generate static content
+Now lets generate static content with Hugo
+```
+hugo -d ../YourUserName.github.io
+```
+And now Push our Hugo Code to github repository
+
+```
+cd YourProjectName
+git add .
+git commit -m "your message"
+git push origin master
+```
+
+And Push Static content to github 
+
+```
+cd YourUserName.github.io
+git add .
+git commit -m "your message"
+git push origin master
+```
+
+</br>
+# Configuring Custom Domain
+
+In order to use custom domain with our gitthub pages, we will have to configure `A` records for our domain (you can do this wil help of DNS Provider)
+
+Add below IP address as a  `A` records on your domain.
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+There are two way to add custom domain to our project.
+1. Create a CNAME file in our root directory of the project
+2. Use `Settings` option from github project repo and add a custom domain.
+
+##### We are going with option 2
+</br>
+Open your github project repo **YourUserName.github.io** and navigate to settings page.Scroll down untill you see **GitHub Pages** section and there will be a option to add custom domain there.
+
+Add your custom domain and click on save button.There is a also another check box `Enforce HTTPS`. check it (It will provide a layer of encryption and your site will be viewed over `HTTPS`).
+
+If you are using a `www` sub-domain, there are chances that you might not be able to check the `Enforce HTTPS` check-box.
+I was also receiving a [Privacy error with custom domain](https://dev.to/priteshusadadiya/privacy-error-with-custom-domain-in-and-github-pages-2ll2) and i solved it by changing a DNS record.
+
+I had added the CNAME record (you can add this using DNS Provider)
+
+```
+www CNAME priteshusadadiya.com
+```
+Problem with above is that I was redirecting my `www` sub-domain to my apex(main) domain.
+
+I Solved this issue by changing my CNAME record to 
+```
+www CNAME YourUserName.github.io // add your github.io url here
+```
+
+</br>
+#### It takes around 48 hours for Github to generate HTTPS certificate on custom domain so, you might want to wait for it.
+
+
+</br></br>
+🙌 **Congratulations,** your website is now live and can be seen at  **\<YourUserName\>.github.io**
+
+
+
+
+##### A Note:
+I am documenting this entire process just in case i might need it in future. Maybe this can be useful to you too.
+
+Happy Coding.
+
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Building Newsletter and contact forms for Hugo site.]]></title>
+            <link>https://www.priteshusadadiya.com/post/building-newsletter-and-contact-forms-for-hugo-site/</link>
+            <guid>https://www.priteshusadadiya.com/post/building-newsletter-and-contact-forms-for-hugo-site/</guid>
+            <pubDate>Sat, 09 Feb 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+Maybe you can use emails service like mailchimp or tinyletters or other xyz service to gather that or there is a another easy way to do it hassle free (at-least I think so)
+
+First thing you need is a simple HTML form that contains one or more input fields.
+
+There is an opensource product named [FORMSPREE](https://github.com/formspree/formspree) that you can use to build your newsletter and contact forms.
+
+
+There is no need to setup any third part plugins or any kind of registration for that. all you need is an email address.
+
+First thing you have to do is add below line to your form to connect it to `FORMSPREE` 
+```
+<form action="https://formspree.io/your@email.com" method="POST" />
+```
+Second thing is to add `name` attribute to all of your form elements.
+
+And the last thing is to confirm email.  you have to submit the form once yourself.This first-time-use will trigger an email requesting confirmation.
+
+Here is how the complete form looks like
+```
+<form method="POST" action="https://formspree.io/your@email.com">
+  <input type="email" name="email" placeholder="Your email">
+  <textarea name="message" placeholder="Test Message"></textarea>
+  <button type="submit">Send Test</button>
+</form>
+```
+
+Do this and you are done. Congratulations!...
+
+### One Important Thing:
+
+Now you have build a contact from to collect emails and feedback and ready to go , what's next ?
+
+Now suppose you write /post your content on multiple platforms so, you can't just use same form everywhere how will you identify what email/data came from which channel ?
+
+Would you use different emails for different platforms ? that sounds messy.
+
+### So what can we do ?
+The answer is to utilize hidden type of form elements.
+like ,
+```
+<input type="hidden" name="NameofPlatfrom" Value="AddSomeValueHere">
+```
+With this, form element will be hidden and will not get displayed to end user but , once form is submitted it will send value of this hidden field as well.
+
+Now you can successfully distinguish sources of your contact data.
+
+### Remember:
+Make sure you don't use same name property more that once in single form. This will confuse the api and users will receive an error and you won't get any data.
+
+
+There are other couple of features of `FORMSPREE` for more advanced configuration but it's paid and i haven't used it. Hence , not included here. But you can [check it out here](https://github.com/formspree/formspree)  
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Creating a blog with Hugo static site Generator]]></title>
+            <link>https://www.priteshusadadiya.com/post/creating-a-blog-with-hugo-static-site-generator/</link>
+            <guid>https://www.priteshusadadiya.com/post/creating-a-blog-with-hugo-static-site-generator/</guid>
+            <pubDate>Wed, 06 Feb 2019 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+Originally I wanted to setup my blog on Wordpress but configuring and hosting a blog on VPS server (no mater how cheap) , requires regular maintenance on monthly basis.
+
+Add that with Keeping server up-to-date to avoid any risks, backups etc... just seems extra work that i really don't want to do.
+
+Other option was host a blog on Blogger and redirect to custom domain. which again didn't seem right because external dependency on Google.(They can remove your blog without any warning if they feel like it. Doesn't matter if they actually do or don't, but they can)
+
+Now being from Technical background and my curiosity to learn , I turned to Static site generators. I have heard some great thing about [Hugo](https://gohugo.io/) so thought why not give it a try. 
+
+Hogo is a great choice as it has Github pages support and i can host entire thing for free with Github.
+
+## Setting up Hugo server locally. 
+---
+</br>
+#### Installing Hugo
+
+There is entire section dedicated to installation for different environment [detailed instructions](https://gohugo.io/getting-started/installing/) .
+
+#### Selecting Theme
+
+after browsing some themes (and there are too many themes) i decided to go with [silhouette-hugo](https://github.com/mattbutton/silhouette-hugo).
+
+#### Creating a new project template and forking a theme.
+
+```
+hugo new site <SITENAME>
+cd <SITENAME>/themes
+git clone https://github.com/mattbutton/silhouette-hugo.git
+```
+
+#### Adding the theme to project's config file.
+```
+cd..
+echo 'theme = "silhouette-hugo"' >> config.toml
+```
+#### Starting the Hugo server locally
+```
+Hugo server
+```
+Once the Hugo is started ,site can be previewed on `http://localhost:1313`
+
+
+#### Changing the site data 
+Go to config.toml file of your project's main directory and from there you can change your sites configuration data like baseurl , title of site , social links etc... 
+
+#### Using some CSS to slightly change look and feel of theme.
+
+Navigate to <SITENAME>/themes/silhouette-hugo/assets/css
+
+Here resides the styles.css file. you can change the style of the theme by editing this file.
+
+[ One of the thing i love most about hugo is instant changes in site without any refresh. You could see the data changes in website as soom as you change/add css property.]
+
+#### Deploy site
+
+If you want to deploy the Hugo site to free GitHub pages, commit the project to your [Github](https://github.com/) account. Just name the repository as **\<Yourname\>.github.io** and the github automatically builds the site into the **http://\<yourname\>.github.io.**
+
+There is a another post for this if you would like to know the process of hosting Hugo blog on GIthub Pages.]]></content:encoded>
+        </item>
+    </channel>
+</rss>
