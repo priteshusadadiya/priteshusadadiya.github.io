@@ -4,8 +4,11 @@
 </Layout>
 </template>
 <script>
-import HomePage from '~/components/HomePage.vue'
+import HomePage from '@/components/HomePage.vue'
 export default {
+  components: {
+    HomePage
+  },
   metaInfo () {
     return this.$seo({
       title: 'Home', // Uses the titleTemplate in Gridsome config
@@ -24,9 +27,6 @@ export default {
       link: [],   // any links
       script: []  // any scripts
     })
-  },
-  components: {
-    HomePage
-  },
+  }
 };
 </script>

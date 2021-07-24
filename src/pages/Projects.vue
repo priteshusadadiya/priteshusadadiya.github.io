@@ -43,10 +43,16 @@
 </template>
 
 <script>
-import Newsletter from "../components/Newsletter.vue";
-import ProjectsList from "../resources/projects.json";
+import Newsletter from "@/components/Newsletter.vue";
+import ProjectsList from "@/resources/projects.json";
 
 export default {
+  components: { Newsletter, ProjectsList },
+  data() {
+    return {
+      ProjectsList
+    }
+  },
   metaInfo() {
     return this.$seo({
       title: "Projects", // Uses the titleTemplate in Gridsome config
@@ -63,12 +69,6 @@ export default {
       link: [], // any links
       script: [], // any scripts
     });
-  },
-  components: { Newsletter, ProjectsList },
-  data() {
-    return {
-      ProjectsList
-    }
   }
 };
 </script>

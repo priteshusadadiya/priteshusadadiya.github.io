@@ -57,9 +57,10 @@ query Category ($id: ID!) {
 }
 </page-query>
 <script>
-import PostCard from '../components/PostCard'
-import Newsletter from "../components/Newsletter.vue";
+import PostCard from '@/components/PostCard'
+import Newsletter from "@/components/Newsletter.vue";
 export default {
+  components: { PostCard,Newsletter },
   metaInfo () {
     return this.$seo({
       title: this.$page.category.title,
@@ -76,7 +77,6 @@ export default {
       link: [],   // any links
       script: []  // any scripts
     })
-  }  ,
-  components: { PostCard,Newsletter },
+  }
 };
 </script>

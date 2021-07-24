@@ -54,9 +54,10 @@ query Tag ($id: ID!) {
 }
 </page-query>
 <script>
-import PostCard from '../components/PostCard'
+import PostCard from '@/components/PostCard'
 
 export default {
+  components: { PostCard },
   metaInfo () {
     return this.$seo({
       title: this.$page.tag.title,
@@ -73,7 +74,6 @@ export default {
       link: [],   // any links
       script: []  // any scripts
     })
-  }  ,
-  components: { PostCard },
+  }
 };
 </script>

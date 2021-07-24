@@ -8,7 +8,7 @@
         <div class="columns">
         <div class="column is-one-third">
         <figure class="image is-square">
-          <img class="" src="@/assets/images/pritesh-gravatar.jpg" alt="Hi, I'm Cory">
+          <img class="" src="@/assets/images/pritesh-gravatar.jpg" alt="Hi, I'm Pritesh">
         </figure>
         </div>
         <div class="column">
@@ -42,8 +42,9 @@
 </template>
 
 <script>
-import Newsletter from "../components/Newsletter.vue";
+import Newsletter from "@/components/Newsletter.vue";
 export default {
+  components: { Newsletter },
   metaInfo() {
     return this.$seo({
       title: "About", // Uses the titleTemplate in Gridsome config
@@ -62,7 +63,6 @@ export default {
       link: [], // any links
       script: [], // any scripts
     });
-  },
-  components: { Newsletter },
+  }
 };
 </script>

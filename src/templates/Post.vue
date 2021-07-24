@@ -50,9 +50,9 @@ query Post($id: ID!) {
 }
 </page-query>
 <script>
-import Newsletter from "../components/Newsletter.vue";
-import PostMeta from "~/components/PostMeta.vue";
-import PostTags from "~/components/PostTags.vue";
+import Newsletter from "@/components/Newsletter.vue";
+import PostMeta from "@/components/PostMeta.vue";
+import PostTags from "@/components/PostTags.vue";
 export default {
   components: {
     PostMeta,
@@ -79,6 +79,6 @@ export default {
       link: [],   // any links
       script: []  // any scripts
     });
-  },
+  }
 };
 </script>

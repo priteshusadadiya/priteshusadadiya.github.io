@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import PostMeta from "~/components/PostMeta";
-import PostTags from "~/components/PostTags";
-import PostCategory from "~/components/PostCategory";
+import PostMeta from "@/components/PostMeta";
+import PostTags from "@/components/PostTags";
+import PostCategory from "@/components/PostCategory";
 export default {
   components: {
     PostMeta,

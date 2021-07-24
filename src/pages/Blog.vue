@@ -52,13 +52,14 @@ query {
 }
 </page-query>
 <script>
-import PostCard from '../components/PostCardMain'
-import Newsletter from "../components/Newsletter.vue";
+import PostCard from '@/components/PostCardMain'
+import Newsletter from "@/components/Newsletter.vue";
 export default {
+  components: { PostCard, Newsletter },
   metaInfo () {
     return this.$seo({
-      title: this.$page.category.title,
-      description: this.$page.category.title,
+      title: "Pritesh's blog",
+      description: 'Software Testing, QA, Automation, Security, Performance, Accessibility, Devops, TDD',
       keywords: 'Software Testing, QA, Automation, Security, Performance, Accessibility, Devops, TDD',
       openGraph: {
         title: 'Browse Categories',
@@ -71,7 +72,6 @@ export default {
       link: [],   // any links
       script: []  // any scripts
     })
-  }  ,
-  components: { PostCard, Newsletter },
+  }
 };
 </script>
