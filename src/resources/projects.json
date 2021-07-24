@@ -1,0 +1,16 @@
+[  
+   {
+     "name":"Software Testing Notes",
+     "tagline":"Latest resources Software Testing.",
+	  "image":"/images/projects/software-testing-notes.png",
+     "web":"https://softwaretestingnotes.com",
+     "description":"Best Hand Curated Articles, News and Tools on Software Testing."
+   },
+   {
+     "name":"Weekly Newsletter",
+     "tagline":"Software Testing Notes Subtack Newsletter",
+	  "image":"/images/projects/software-testing-notes.png",
+     "web":"https://softwaretestingnotes.substack.com",
+     "description":"Delivered every Week, free. Software Testing Notes is the very best way to stay up to date with Software Testing news."
+   }
+]

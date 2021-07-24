@@ -1,0 +1,94 @@
+
+body {
+  color: #4a4a4a;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.pu-portrait {
+  max-height: 450px;
+  display: block;
+  margin: auto;
+  border-radius: 20px;
+}
+.heading {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+a {
+  color: #3273dc;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover{
+
+  text-decoration: underline;
+}
+.pu-post {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pu-post-body {
+  padding-top: 0.5em;
+  padding-bottom: 2em;
+}
+.site-footer {
+  padding-top: 1em;
+}
+.pu-icon a {
+  color: #4a4a4a;
+}
+.pu-icon a:hover {
+  color: #3273dc;
+}
+
+.icon.icon-link{
+  color: #4a4a4a;
+  display: none;
+}
+.newsletter {
+  background-image: url('/images/cubes.png');
+}
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+.card {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px -2px #0000007a;
+}
+.hero.is-white {
+  background-color: #e5e7eb;
+}
+
+.hero.is-project {
+  background-color: #6f5499;
+}
+
+.card-equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.project-card {
+  box-shadow: 0 0 8px -2px #0000007a;
+  text-decoration: none;
+  transition: all .5s ease; /* back to normal */
+}
+.project-card:hover{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  transition: all .4s ease; /* zoom in */
+  transform: translate3D(0,5px,0) scale(1.03);
+  text-decoration: none;
+}
+.short-bio{
+  color: #666;
+  margin: auto;
+  max-width: 80%;
+  text-align: center;
+}
