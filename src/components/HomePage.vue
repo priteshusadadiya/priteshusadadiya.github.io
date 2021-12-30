@@ -5,7 +5,7 @@
             <div class="columns">
                 <div class="column is-one-third">
                     <figure class="image is-square">
-                        <img class="pu-portrait" src="@/assets/images/pritesh-gravatar.jpg" alt="Hi, I'm Pritesh">
+                        <g-image class="pu-portrait" src="@/assets/images/pritesh-gravatar.jpg" alt="Hi, I'm Pritesh">
                     </figure>
                 </div>
                 <div class="column">

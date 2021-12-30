@@ -12,17 +12,19 @@ export default {
   metaInfo () {
     return this.$seo({
       title: 'Home', // Uses the titleTemplate in Gridsome config
-      description: "Pritesh Usadadiya is a software tester, occasional coder and blogger. and launching projects on the side.",
+      description: "Pritesh Usadadiya is a software tester, occasional coder and blogger.",
       keywords: 'Software Testing, QA, Automation, Security, Performance, Accessibility, Devops, TDD',
       openGraph: {
         title: 'Pritesh Usadadiya',
+		description: "Pritesh Usadadiya is a software tester, occasional coder and blogger.",
         type: 'website',
-        image: '/images/pritesh-gravatar.jpg'
+        image: 'https://www.priteshusadadiya.com/images/pritesh-gravatar.jpg'
       },
       twitter: {
         title: 'Pritesh Usadadiya',
+		description: "Pritesh Usadadiya is a software tester, occasional coder and blogger.",
         type: 'summary',
-        image: '/images/pritesh-gravatar.jpg'
+        image: 'https://www.priteshusadadiya.com/images/pritesh-gravatar.jpg'
       },
       link: [],   // any links
       script: []  // any scripts
